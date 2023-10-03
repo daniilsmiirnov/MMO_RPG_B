@@ -1,0 +1,20 @@
+{% extends 'default.html' %}
+
+{% block title %}
+    Все объявления
+{% endblock title %}
+
+{% block content %}
+    <h1 class=" text-dark" >Все объявления</h1>
+    <hr>
+    <a class=" text-dark" href="posts/create">Создать объявление</a>
+    {% if messages %}
+        {% for message in messages %}
+            <h2><a  class=" text-dark" href="posts/{{ message.id }}">{{ message.title }}</a></h2>
+            <p class=" text-dark">{{ message.messageAuthor }}</p>
+            <p class=" text-dark">{{ message.dateTimeCreation }}</p>
+        {% endfor %}
+    {% else %}
+        <h2 class=" text-dark" >Объявлений нет!</h2>
+    {% endif %}
+{% endblock content %}

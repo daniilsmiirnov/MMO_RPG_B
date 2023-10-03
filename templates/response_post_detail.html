@@ -1,0 +1,24 @@
+{% extends 'default.html' %}
+
+{% block title %}
+    Отклик на "{{ response.message }}"
+{% endblock title %}
+
+{% block content %}
+    <h2>Отклик на "{{ response.message }}"</h2>
+    <p>Автор отклика: {{ response.responseAuthor }}</p>
+    <p>{{ response.text }}</p>
+    {% if response.isAccepted %}
+        <p>Отклик принят!</p>
+    {% else %}
+        <p>Отклик не принят!</p>
+    {% endif %}
+     <form action="{% url 'accept' response.id %}" method="post" id="formReview">
+         {% csrf_token %}
+         <button class="btn btn-primary">Принять</button>
+     </form>
+    <form action="{% url 'delete' response.id %}" method="post" id="formDelete">
+         {% csrf_token %}
+         <button class="btn btn-primary">Удалить</button>
+    </form>
+{% endblock content %}

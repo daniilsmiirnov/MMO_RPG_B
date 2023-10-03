@@ -1,0 +1,10 @@
+{% extends 'default.html' %}
+
+{% block title %}
+{{ message.title}}
+{% endblock title %}
+
+{% block content %}
+    <h2>{{ response.message }}</h2>
+    {{ response.text }}
+{% endblock content %}

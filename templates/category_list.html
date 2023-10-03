@@ -1,0 +1,21 @@
+{% extends 'default.html' %}
+
+{% block title %}
+    Category
+{% endblock title %}
+
+{% block content %}
+    <h1  class=" text-dark" >Категории объявлений</h1>
+    <hr>
+    {%  if categories %}
+        {% for category in categories %}
+            <p>
+                {{ category }}
+                <a href="{% url 'subscribe' category.id %}">Подписаться</a>
+                <a href="{% url 'unsubscribe' category.id %}">Отписаться</a>
+            </p>
+        {% endfor %}
+    {% else %}
+        <h2 class=" text-dark">Категорий нет!</h2>
+    {% endif %}
+{% endblock content %}

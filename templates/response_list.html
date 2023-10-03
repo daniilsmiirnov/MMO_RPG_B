@@ -1,0 +1,18 @@
+{% extends 'default.html' %}
+
+{% block title %}
+    Мои отклики
+{% endblock title %}
+
+{% block content %}
+    <h1 class=" text-dark" >Мои отклики</h1>
+    <hr>
+    {% if responses %}
+        {% for response in responses %}
+            <h2 ><a class=" text-dark" href="responses_posts/{{ response.id }}">Отклик на "{{ response.message }}"</a></h2>
+            <p>{{ response.text }}</p>
+        {% endfor %}
+    {% else %}
+        <h2 class=" text-dark" >Откликов нет!</h2>
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'default.html' %}
+
+{% block title %}
+    Отклики на мои объявления
+{% endblock title %}
+
+{% block content %}
+    <h1 class=" text-dark">Отклики на мои объявления</h1>
+    <hr>
+    {% if responses %}
+    <form method="GET">
+        {{ filter.form }}
+        <input class="btn btn-primary" type="submit" value="Найти">
+    </form>
+        {% for response in filter.qs %}
+            <h2><a class=" text-dark" href="responses_posts/{{ response.id }}">Отклик на "{{ response.message }}"</a></h2>
+            <p>{{ response.text }}</p>
+        {% endfor %}
+    {% else %}
+        <h2 class=" text-dark">Откликов нет!</h2>
+    {% endif %}
+{% endblock content %}
